@@ -15,12 +15,44 @@ const Button = ({ text, onClick }) => {
 }
 
 const Statistics = ({ good, neutral, bad }) => {
+  const getSum = () => {
+    return good + neutral + bad;
+  }
+
+  const getNonZero = () => {
+    let nonZeroes = 0;
+
+    if (good !== 0) nonZeroes++;
+    if (neutral !== 0) nonZeroes++;
+    if (bad !== 0) nonZeroes++;
+
+    return nonZeroes;
+  }
+  
+  const getAverage = () => {
+    const sum = getSum();
+    const nonZero = getNonZero();
+
+    if (nonZero !== 0) return sum/nonZero;
+    else return 0;
+  }
+
+  const getPositivePercent = () => {
+    const sum = getSum();
+
+    if (sum !== 0) return (good/sum) * 100;
+    else return 0;
+  }
+
   return (
     <div>
       <h1>Statistics</h1>
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
+      <p>all {getSum()}</p>
+      <p>average {getAverage()}</p>
+      <p>positive {getPositivePercent()} %</p>
     </div>
   );
 }
