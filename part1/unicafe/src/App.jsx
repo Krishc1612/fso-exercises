@@ -14,6 +14,12 @@ const Button = ({ text, onClick }) => {
   );
 }
 
+const StatisticLine = ({ text, value }) => {
+  return (
+    <p>{text} {value}</p>
+  );
+}
+
 const Statistics = ({ good, neutral, bad }) => {
   const getSum = () => {
     return good + neutral + bad;
@@ -48,12 +54,12 @@ const Statistics = ({ good, neutral, bad }) => {
     return (
       <div>
         <h1>Statistics</h1>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {getSum()}</p>
-        <p>average {getAverage()}</p>
-        <p>positive {getPositivePercent()} %</p>
+        <StatisticLine text = "good" value = {good}/>
+        <StatisticLine text = "neutral" value = {neutral}/>
+        <StatisticLine text = "bad" value = {bad}/>
+        <StatisticLine text = "all" value = {getSum()}/>
+        <StatisticLine text = "average" value = {getAverage()}/>
+        <StatisticLine text = "positive" value = {`${getPositivePercent()} %`}/>
       </div>
     );
   } 
