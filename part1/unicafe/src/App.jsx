@@ -16,7 +16,10 @@ const Button = ({ text, onClick }) => {
 
 const StatisticLine = ({ text, value }) => {
   return (
-    <p>{text} {value}</p>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   );
 }
 
@@ -43,12 +46,17 @@ const Statistics = ({ good, neutral, bad }) => {
     return (
       <div>
         <h1>Statistics</h1>
-        <StatisticLine text = "good" value = {good}/>
-        <StatisticLine text = "neutral" value = {neutral}/>
-        <StatisticLine text = "bad" value = {bad}/>
-        <StatisticLine text = "all" value = {getSum()}/>
-        <StatisticLine text = "average" value = {getAverage()}/>
-        <StatisticLine text = "positive" value = {`${getPositivePercent()} %`}/>
+        <table>
+          <tbody> 
+            <StatisticLine text = "good" value = {good}/>
+            <StatisticLine text = "neutral" value = {neutral}/>
+            <StatisticLine text = "bad" value = {bad}/>
+            <StatisticLine text = "all" value = {getSum()}/>
+            <StatisticLine text = "average" value = {getAverage()}/>
+            <StatisticLine text = "positive" value = {`${getPositivePercent()} %`}/>
+          </tbody>
+        </table>
+        {/*Dont know why I had to mention the tbody here even tho docs say that without tbody it shall work fine, but without tbody react is throwing some kind of hydration error */}
       </div>
     );
   } 
