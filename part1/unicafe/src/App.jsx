@@ -25,21 +25,10 @@ const Statistics = ({ good, neutral, bad }) => {
     return good + neutral + bad;
   }
 
-  const getNonZero = () => {
-    let nonZeroes = 0;
-
-    if (good !== 0) nonZeroes++;
-    if (neutral !== 0) nonZeroes++;
-    if (bad !== 0) nonZeroes++;
-
-    return nonZeroes;
-  }
-  
   const getAverage = () => {
     const sum = getSum();
-    const nonZero = getNonZero();
 
-    if (nonZero !== 0) return sum/nonZero;
+    if (sum !== 0) return (good - bad)/sum;
     else return 0;
   }
 
