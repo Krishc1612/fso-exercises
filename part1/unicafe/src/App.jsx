@@ -44,17 +44,26 @@ const Statistics = ({ good, neutral, bad }) => {
     else return 0;
   }
 
-  return (
-    <div>
-      <h1>Statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {getSum()}</p>
-      <p>average {getAverage()}</p>
-      <p>positive {getPositivePercent()} %</p>
-    </div>
-  );
+  if (getSum() !== 0){
+    return (
+      <div>
+        <h1>Statistics</h1>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+        <p>all {getSum()}</p>
+        <p>average {getAverage()}</p>
+        <p>positive {getPositivePercent()} %</p>
+      </div>
+    );
+  } 
+  else {
+    return (
+      <div>
+        <p>No feedback given</p>
+      </div>
+    );
+  }
 }
 
 const App = () => {
