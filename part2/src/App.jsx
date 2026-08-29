@@ -17,8 +17,16 @@ const Content = ({ parts }) => {
 }
 
 const Total = ({ parts }) => {
-  let total = 0;
-  parts.forEach(part => total += part.exercises);
+  // init -> 0
+  const total = parts.reduce((acc, curr) => {
+    // console.log("what is happening!?", acc, curr);
+    // curr is basically the current iteration element of the array, here it is an object. As we only want exercises sum, adding curr.exercises rather than curr makes sense.
+
+    // no need to worry about acc because it is assigned the initial value "init" first 
+    return acc + curr.exercises;
+
+    // if we had kept acc + curr, then it would be number + object, which wont give desirable results.
+  }, 0); // the 0 is init here.
 
   return (
     <p>Number of exercises {total}</p>
