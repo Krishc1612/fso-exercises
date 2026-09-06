@@ -49,7 +49,21 @@ const App = () => {
               setPersons(persons.concat(data));
             })
       }
-      else if (trimmedName !== '') alert(`${trimmedName} is already added to phonebook`);
+      else if (trimmedName !== '') {
+        const msg = `${matches[0].name} is already added to the phonebook, replace the old number with a new one?`;
+
+        if (window.confirm(msg)) {
+          const modPerson = { ...matches[0], number: trimmedNumber};
+          const newPersons = persons.map(person => person.id === matches[0].id ? modPerson : person);
+
+          personServices
+            .update(matches[0].id, modPerson)
+            .then(data => {
+              console.log("Number changed");
+              setPersons(newPersons);
+            })
+        }
+      } 
   }
 
   const handleNumChange = (event) => setNewNumber(event.target.value);
