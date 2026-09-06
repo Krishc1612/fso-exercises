@@ -1,24 +1,65 @@
 {
-  "persons":[
-    { 
-      "name": "Arto Hellas", 
+  "persons": [
+    {
+      "name": "Arto Hellas",
       "number": "040-123456",
       "id": "1"
     },
-    { 
-      "name": "Ada Lovelace", 
+    {
+      "name": "Ada Lovelace",
       "number": "39-44-5323523",
       "id": "2"
     },
-    { 
-      "name": "Dan Abramov", 
+    {
+      "name": "Dan Abramov",
       "number": "12-43-234345",
       "id": "3"
     },
-    { 
-      "name": "Mary Poppendieck", 
+    {
+      "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": "4"
+    },
+    {
+      "name": "krish",
+      "number": "878-046-4888",
+      "id": "Qn5Xoz5WO7Y"
+    },
+    {
+      "name": "dudu",
+      "number": "096075797",
+      "id": "rGhIeoeB4hg"
+    },
+    {
+      "name": "cheta",
+      "number": "92850287",
+      "id": "Z9W7o1k2Roc"
+    },
+    {
+      "name": "someone",
+      "number": "123456789",
+      "id": "pKV0SQHK88w"
+    },
+    {
+      "name": "papa",
+      "number": "987654321",
+      "id": "ChQf_Rx9oLE"
+    },
+    {
+      "name": "nani",
+      "number": "876543219",
+      "id": "ju5nP4AxYBE"
+    },
+    {
+      "name": "Joker",
+      "number": "0000000000",
+      "id": "fYFWklvMjWo"
+    },
+    {
+      "name": "another joker",
+      "number": "123456789",
+      "id": "nWrd88P-1h4"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

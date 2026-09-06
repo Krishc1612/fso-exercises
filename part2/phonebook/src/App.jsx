@@ -15,7 +15,7 @@ const App = () => {
     axios
       .get('http://localhost:3001/persons')
       .then(response => {
-        console.log(response.data);
+        // console.log("response after get:",response.data);
         setPersons(response.data);
       })
   }, []);
@@ -39,18 +39,22 @@ const App = () => {
       if (trimmedName !== '' && matches.length === 0){
           const newPerson = {
               name : trimmedName,
-              number: trimmedNumber,
-              id: String(persons.length + 1)
+              number: trimmedNumber
           }
 
-          setPersons(persons.concat(newPerson));
+          axios
+            .post('http://localhost:3001/persons', newPerson)
+            .then(response => {
+              // console.log("response after post:", response.data);
+              setPersons(persons.concat(response.data));
+            })
       }
       else if (trimmedName !== '') alert(`${trimmedName} is already added to phonebook`);
   }
 
   const handleNumChange = (event) => setNewNumber(event.target.value);
 
-  console.log(persons);
+  // console.log(persons);
 
   const handleFilter = (event) => setFilter(event.target.value); 
 

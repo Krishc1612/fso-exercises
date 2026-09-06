@@ -7,6 +7,7 @@ const Person = ({ name, number }) => {
 const Persons = ({ persons, filter }) => {
     const getFilteredPersons = () => {
         const smallFilter = filter.trim().toLowerCase();
+        // console.log("this is persons:", persons);
 
         const filtered = persons.filter(({ name }) => {
             name = name.toLowerCase();
