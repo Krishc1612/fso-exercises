@@ -59,6 +59,11 @@
       "name": "another joker",
       "number": "123456789",
       "id": "nWrd88P-1h4"
+    },
+    {
+      "name": "person",
+      "number": "1209348756",
+      "id": "jTgwpVx8dAc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

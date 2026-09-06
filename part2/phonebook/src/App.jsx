@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import Persons from './components/Persons';
+import personServices from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([]); 
@@ -12,11 +12,11 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('');
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
+    personServices
+      .getAll()
+      .then(data => {
         // console.log("response after get:",response.data);
-        setPersons(response.data);
+        setPersons(data);
       })
   }, []);
 
@@ -42,11 +42,11 @@ const App = () => {
               number: trimmedNumber
           }
 
-          axios
-            .post('http://localhost:3001/persons', newPerson)
-            .then(response => {
+          personServices
+            .create(newPerson)
+            .then(data => {
               // console.log("response after post:", response.data);
-              setPersons(persons.concat(response.data));
+              setPersons(persons.concat(data));
             })
       }
       else if (trimmedName !== '') alert(`${trimmedName} is already added to phonebook`);
