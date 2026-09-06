@@ -1,10 +1,10 @@
-const Person = ({ name, number }) => {
+const Person = ({ name, number, handleDelete }) => {
     return (
-        <p>{name} {number}</p>
+        <p>{name} {number} <button onClick = {handleDelete}>delete</button></p>
     );
 }
 
-const Persons = ({ persons, filter }) => {
+const Persons = ({ persons, filter, handleDelete }) => {
     const getFilteredPersons = () => {
         const smallFilter = filter.trim().toLowerCase();
         // console.log("this is persons:", persons);
@@ -25,6 +25,7 @@ const Persons = ({ persons, filter }) => {
                     key = {person.name}
                     name = {person.name} 
                     number = {person.number}
+                    handleDelete = {() => handleDelete(person.id)}
                 />
             ))}
         </div>

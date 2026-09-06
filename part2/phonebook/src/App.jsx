@@ -56,7 +56,23 @@ const App = () => {
 
   // console.log(persons);
 
-  const handleFilter = (event) => setFilter(event.target.value); 
+  const handleFilter = (event) => setFilter(event.target.value);
+  
+  const handleDelete = (id) => {
+    // console.log(`${id} needs to be deleted.`);
+    const toDelete = persons.find(person => person.id === id);
+    
+    if(window.confirm(`Delete ${toDelete.name}?`)){
+      const newPersons = persons.filter(person => person.id !== id);
+
+      personServices
+        .deletePerson(id)
+        .then(data => {
+          console.log(data);
+          setPersons(newPersons);
+        })
+    }
+  }
 
   return (
     <div>
@@ -71,7 +87,11 @@ const App = () => {
         handleSubmit = {handleSubmit}
       />
       <h2>Numbers</h2>
-      <Persons persons = {persons} filter = {filter}/>
+      <Persons 
+        persons = {persons} 
+        filter = {filter}
+        handleDelete = {handleDelete} 
+      />
     </div>
   )
 }
