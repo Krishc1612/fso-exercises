@@ -31,7 +31,6 @@ const App = () => {
   const clearMessage = () => {
     setTimeout(() => {
       setMessage(null);
-      setIsError(false);
     }, 5000)
   } 
 
@@ -57,6 +56,8 @@ const App = () => {
             .then(data => {
               // console.log("response after post:", response.data);
               setPersons(persons.concat(data));
+
+              setIsError(false);
               setMessage(`Added ${trimmedName}`);
 
               clearMessage();
@@ -74,6 +75,8 @@ const App = () => {
             .then(data => {
               console.log("Number changed");
               setPersons(newPersons);
+
+              setIsError(false);
               setMessage(`Changed number of ${matches[0].name}`);
 
               clearMessage();
