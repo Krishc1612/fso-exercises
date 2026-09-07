@@ -12,6 +12,7 @@ const App = () => {
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [message, setMessage] = useState(null);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     personServices
@@ -26,6 +27,13 @@ const App = () => {
   // console.log(event.target.value);
       setNewName(event.target.value);
   }
+
+  const clearMessage = () => {
+    setTimeout(() => {
+      setMessage(null);
+      setIsError(false);
+    }, 5000)
+  } 
 
   const handleSubmit = (event) => {
       event.preventDefault();
@@ -51,9 +59,7 @@ const App = () => {
               setPersons(persons.concat(data));
               setMessage(`Added ${trimmedName}`);
 
-              setTimeout(() => {
-                setMessage(null);
-              }, 5000);
+              clearMessage();
             })
       }
       else if (trimmedName !== '') {
@@ -70,9 +76,15 @@ const App = () => {
               setPersons(newPersons);
               setMessage(`Changed number of ${matches[0].name}`);
 
-              setTimeout(() => {
-                setMessage(null);
-              }, 5000);
+              clearMessage();
+            })
+            .catch(error => {
+              setIsError(true);
+              setMessage(`Information of ${matches[0].name} has already been removed from server`);
+
+              setPersons(persons.filter(person => person.id !== matches[0].id));
+
+              clearMessage();
             })
         }
       } 
@@ -103,7 +115,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message = {message}/>
+      <Notification message = {message} isError= {isError}/>
       <Filter value = {filter} onChange = {handleFilter}/>
       <h2>add a new</h2>
       <PersonForm 

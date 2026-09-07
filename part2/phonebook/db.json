@@ -16,11 +16,6 @@
       "id": "Z9W7o1k2Roc"
     },
     {
-      "name": "someone",
-      "number": "123456789",
-      "id": "pKV0SQHK88w"
-    },
-    {
       "name": "papa",
       "number": "987654321",
       "id": "ChQf_Rx9oLE"
@@ -31,19 +26,19 @@
       "id": "ju5nP4AxYBE"
     },
     {
-      "name": "another joker",
-      "number": "123456789",
-      "id": "nWrd88P-1h4"
-    },
-    {
       "name": "person",
-      "number": "1209348756",
+      "number": "124164178",
       "id": "jTgwpVx8dAc"
     },
     {
-      "name": "another person",
-      "number": "123456789",
-      "id": "z5OtTyKDIBs"
+      "name": "nana",
+      "number": "187592607",
+      "id": "8zdzzQuemcw"
+    },
+    {
+      "name": "dada",
+      "number": "196087158",
+      "id": "A9RgyWuzHK4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
