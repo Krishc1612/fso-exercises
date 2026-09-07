@@ -4,12 +4,14 @@ import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import Persons from './components/Persons';
 import personServices from './services/persons'
+import Notification from './components/Notification';
 
 const App = () => {
   const [persons, setPersons] = useState([]); 
   const [filter, setFilter] = useState('');
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     personServices
@@ -47,6 +49,11 @@ const App = () => {
             .then(data => {
               // console.log("response after post:", response.data);
               setPersons(persons.concat(data));
+              setMessage(`Added ${trimmedName}`);
+
+              setTimeout(() => {
+                setMessage(null);
+              }, 5000);
             })
       }
       else if (trimmedName !== '') {
@@ -61,6 +68,11 @@ const App = () => {
             .then(data => {
               console.log("Number changed");
               setPersons(newPersons);
+              setMessage(`Changed number of ${matches[0].name}`);
+
+              setTimeout(() => {
+                setMessage(null);
+              }, 5000);
             })
         }
       } 
@@ -91,6 +103,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message = {message}/>
       <Filter value = {filter} onChange = {handleFilter}/>
       <h2>add a new</h2>
       <PersonForm 
